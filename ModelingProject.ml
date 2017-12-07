@@ -1,6 +1,6 @@
 (* 
 	Christian Cameron Modeling Project. 
-	Modeling Pro Athletes
+	Modeling Pro and Average Athletes
 	____________________
 
 	Modeling 7 types of professional athletes
@@ -46,6 +46,7 @@ datatype athlete =
 	
 (*Modeling Data*)
 
+(*Pro Athletes*)
 val leonardFournette = WideReceiver("Leonard Fournette", 1665, 33.0, 17.54);
 val randyMoss = WideReceiver("Randy Moss", 1000, 51.0, 18.82);
 
@@ -60,8 +61,8 @@ val lebronJames = BasketballPlayer("LeBron James", 0.784, 40.0, 20.0);
 val kobeBryant = BasketballPlayer("Kobe Bryant", 0.826, 38.0, 15.5);
 val michaelJordan = BasketballPlayer("Michael Jordan", 0.821, 48.0, 19.13);
 
-val caelebDressel = Swimmer("Caeleb Dressel", 41.0, 4.742);
-val michaelPhelps = Swimmer("Michael Phelps", 37.0, 4.709);
+val caelebDressel = Swimmer("Caeleb Dressel", 41.0, 5.681);
+val michaelPhelps = Swimmer("Michael Phelps", 37.0, 5.605);
 
 val usainBolt = Runner("Usain Bolt", 23.35);
 val justinGatlin = Runner("Justin Gatlin", 22.71);
@@ -70,11 +71,24 @@ val eddieHall = Powerlifter("Eddie Hall", 2653);
 val brianShaw = Powerlifter("Brian Shaw", 2685);
 
 
+(*Non-pro Athletes*)
+(*Current freshman swimmers*)
+val jamesConrady = Swimmer("James Conrady", 20.0, 3.987);
+val christianCameron = Swimmer("Christian Cameron", 31.0, 4.341);
+
+(*Wheaton college record holding runners.*)
+val kermitEllison = Runner("Kermit Ellison", 19.13);
+val richardHollatz = Runner("Richard Hollatz", 19.79);
+
+
 
 val allAthletes = [aaronRodgers, tomBrady, lebronJames, kobeBryant, michaelJordan, leonardFournette, caelebDressel, michaelPhelps, usainBolt,
-				eddieHall, brianShaw, randyMoss, justinGatlin, dermonttiDawson, mikeWebster, jimOtto];
+				eddieHall, brianShaw, randyMoss, justinGatlin, dermonttiDawson, mikeWebster, jimOtto, jamesConrady,christianCameron,kermitEllison,
+				richardHollatz];
 
 val allFBAthletes = [aaronRodgers, tomBrady, leonardFournette, randyMoss, dermonttiDawson, mikeWebster, jimOtto];
+
+val allAverageAthletes = [jamesConrady, christianCameron, kermitEllison, richardHollatz];
 
 
 (*
@@ -95,7 +109,7 @@ fun calculatePowerIndex(WideReceiver(n,m,vj,s)) = Real.fromInt(m div 50)+(vj*5.6
 	| calculatePowerIndex(Quarterback(n,a,rt,fp)) = a*870.0 - rt*50.0 - fp*1000.0
 	| calculatePowerIndex(OffensiveCenter(n,m,w)) = (Real.fromInt(m)*0.5*w*0.05)/36.0
 	| calculatePowerIndex(BasketballPlayer(n,a,vj,s)) = (vj*3.0 + s)*(a*3.9)
-	| calculatePowerIndex(Swimmer(n,vj,s)) = ((s*84.0) + (vj*2.0))
+	| calculatePowerIndex(Swimmer(n,vj,s)) = ((s*60.0) + (vj*3.0))
 	| calculatePowerIndex(Runner(n,s)) = s*20.7
 	| calculatePowerIndex(Powerlifter(n,m)) = Real.fromInt(m)/5.9;
 
